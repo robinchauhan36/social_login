@@ -7,4 +7,5 @@ def home(request):
     return render(request, 'templates/home.html')
 
 
-SWA
+def registration(request):
+    return render(request, 'templates/registration.html')
