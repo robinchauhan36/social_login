@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <html>
+    <head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <style>
+
+    body
+    {
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    .fb-profile img.fb-image-lg{
+        z-index: 0;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .fb-image-profile
+    {
+        margin: -90px 10px 0px 50px;
+        z-index: 9;
+        width: 20%;
+    }
+
+    @media (max-width:768px)
+    {
+
+    .fb-profile-text>h1{
+        font-weight: 700;
+        font-size:16px;
+    }
+
+    .fb-image-profile
+    {
+        margin: -45px 10px 0px 25px;
+        z-index: 9;
+        width: 20%;
+    }
+
+    }
+    </style>
+    </head>
+    <body>
+
+    <!------ Include the above in your HEAD tag ---------->
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <div class="container">
+        <div class="fb-profile">
+            <a href="{{ user.profile.cover_pics.url }}" data-lightbox="image-1" data-title="My caption">
+            <img align="left" class="fb-image-lg" src="{{ user.profile.cover_pics.url }}" alt="No cover pic"/>
+            </a>
+            <a href="{{ user.profile.image.url }}" data-lightbox="image-1" data-title="My caption">
+
+            <img align="left" class="fb-image-profile thumbnail" src="{{ user.profile.image.url }}" alt="No profile pic"/>
+            </a>
+            <div class="fb-profile-text">
+                <h2 class="account-heading">{{ user.username }}</h2>
+              <p class="text-secondary">{{ user.email }}</p>
+                <p> {{ user.profile.bio }} </p>
+            </div>
+        </div>
+        <form method="POST" enctype="multipart/form-data">
+            <small class="text-muted">
+                Edit Profile <a class="ml-2" href="{% url 'update' %}">Edit</a>
+            </small>
+        </form>
+    </div>
+    <!-- /container -->
+    </body>
+    </html>
+{% endblock content %}
